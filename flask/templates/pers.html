@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CRUD in sqlalchemy</title>
+</head>
+<body>
+    <form method="POST" action="/perso">
+        <input type="text" name="name">
+        <input type="submit" value="Add">
+    </form>
+    <h1>People</h1>
+    {% for pple in ppl %}
+      <p>{{pple.name}}</p>
+      <form method="POST" action="./update">
+        <input type="hidden" value="{{pple.name}}" name="oldname">
+        <input type="text" value="{{pple.name}}" name="newname">
+        <input type="submit" value="Update">
+      </form>
+      <form method="POST" action="./delete">
+        <input type="hidden" value="{{pple.name}}" name="name">
+        <input type="submit" value="Delete">
+      </form>
+    {% endfor %}
+</body>
+</html>
